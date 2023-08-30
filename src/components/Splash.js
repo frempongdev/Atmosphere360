@@ -17,10 +17,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: '#5b86e5',
   },
   logoText: {
-    color: 'black',
+    color: 'white',
     fontSize: 30,
   },
 });
