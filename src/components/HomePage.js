@@ -1,7 +1,21 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import {fetchCity} from '../../redux/geolocation/GeolocationSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 const HomePage = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const {city} = useSelector(state => state.city);
+
+  const dispatch = useDispatch();
+
+  const handleInputChange = newValue => {
+    // console.log(inputValue);
+    setInputValue(newValue);
+    dispatch(fetchCity(newValue));
+  };
+
   return (
     <View style={styles.homeWrapper}>
       <Text style={[styles.headText, styles.centre]}>Atmospere360</Text>
@@ -12,7 +26,15 @@ const HomePage = () => {
         <TextInput
           placeholder="ex.  48.75,2.32   OR   London"
           style={[styles.input, styles.centre]}
+          value={inputValue}
+          onChangeText={handleInputChange}
         />
+        <View>
+          {city.length > 0 &&
+            city.map(oneCity => {
+              <Text>{oneCity.name}</Text>;
+            })}
+        </View>
       </View>
     </View>
   );
