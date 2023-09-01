@@ -1,19 +1,34 @@
-import {FlatList, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
-import React, {useState} from 'react';
-import {clearResults, fetchCity} from '../../redux/geolocation/GeolocationSlice';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  clearResults,
+  fetchCity,
+} from '../../redux/geolocation/GeolocationSlice';
 import {useDispatch, useSelector} from 'react-redux';
+import {fetctWeather} from '../../redux/weather/weatherSlice';
 
 const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [coordinates, setCoordinates] = useState([]);
 
   const {city} = useSelector(state => state.city);
+  const {weatherDetails} = useSelector(state => state.weather);
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetctWeather(coordinates));
+  }, [coordinates, dispatch]);
+
   const handleInputChange = newValue => {
-    // console.log(inputValue);
     setInputValue(newValue);
     dispatch(fetchCity(newValue));
   };
@@ -21,8 +36,7 @@ const HomePage = () => {
   const handleCitySelect = ct => {
     setInputValue('');
     dispatch(clearResults());
-    setLatitude(ct.lat);
-    setLongitude(ct.lon);
+    setCoordinates([ct.lat, ct.lon]);
     setInputValue(`${ct?.name}, ${ct?.country}`);
   };
 
@@ -35,6 +49,7 @@ const HomePage = () => {
         </Text>
         <TextInput
           placeholder="ex.  48.75,2.32   OR   London"
+          placeholderTextColor="rgb(15 57 147)"
           style={[styles.input, styles.centre]}
           value={inputValue}
           onChangeText={handleInputChange}
@@ -55,9 +70,42 @@ const HomePage = () => {
             />
           )}
         </View>
-        <View style={styles.displayArea}>
-          <Text>ACCRA</Text>
-        </View>
+        {weatherDetails?.name && (
+          <View style={[styles.displayArea, styles.centre]}>
+            <Text
+              style={[
+                styles.cityName,
+                styles.centre,
+                styles.cBlue,
+              ]}>{`${weatherDetails?.name}, ${weatherDetails?.sys?.country}`}</Text>
+            <View style={styles.weatherDetails}>
+              <Text style={[styles.description, styles.centre, styles.cBlue]}>
+                {weatherDetails?.weather[0]?.description}
+              </Text>
+              <View style={styles.downDetails}>
+                <Text style={[styles.degree, styles.cWhite]}>
+                  {Math.round(weatherDetails?.main?.temp - 273)}°
+                </Text>
+                <View style={styles.rightDetails}>
+                  <View style={styles.rightDetail}>
+                    <Text style={[styles.humidity, styles.centre, styles.cWhite]}>
+                      {weatherDetails?.main?.humidity}%
+                    </Text>
+                    <Text style={[styles.centre, styles.cBlue]}>Humidity</Text>
+                  </View>
+                  <View style={styles.rightDetail}>
+                    <Text style={[styles.humidity, styles.centre, styles.cWhite]}>
+                      {weatherDetails?.wind?.speed} m/s
+                    </Text>
+                    <Text style={[styles.centre, styles.cBlue]}>
+                      Wind Speed
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -66,6 +114,12 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   centre: {
     alignSelf: 'center',
+  },
+  cBlue: {
+    color: 'rgb(15 57 147)',
+  },
+  cWhite: {
+    color: 'white',
   },
   homeWrapper: {
     flex: 1,
@@ -95,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     textAlign: 'center',
     width: '80%',
+    marginBottom: 25,
   },
   resultsContainer: {
     zIndex: 99,
@@ -109,6 +164,32 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderBottomColor: 'black',
     borderBottomWidth: 0.5,
+  },
+  cityName: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  description: {
+    marginBottom: 20,
+  },
+  downDetails: {
+    flexDirection: 'row',
+    gap: 20,
+    borderTopWidth: 0.5,
+    borderTopColor: 'white',
+  },
+  degree: {
+    fontSize: 90,
+  },
+  humidity: {
+    fontSize: 18,
+  },
+  rightDetails: {
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  rightDetail: {
+    marginBottom: 7,
   },
 });
 
