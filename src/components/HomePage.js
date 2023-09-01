@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import {fetchCity} from '../../redux/geolocation/GeolocationSlice';
 import {useDispatch, useSelector} from 'react-redux';
@@ -29,11 +29,22 @@ const HomePage = () => {
           value={inputValue}
           onChangeText={handleInputChange}
         />
-        <View>
-          {city.length > 0 &&
-            city.map(oneCity => {
-              <Text>{oneCity.name}</Text>;
-            })}
+        <View style={[styles.resultsContainer, styles.centre]}>
+          {city.length > 0 && (
+            <FlatList
+              data={city}
+              renderItem={({item}) => (
+                <Text
+                  style={
+                    styles.resultsCity
+                  }>{`${item?.name}, ${item.country}`}</Text>
+              )}
+              keyExtractor={item => item.lat}
+            />
+          )}
+        </View>
+        <View style={styles.displayArea}>
+          <Text>ACCRA</Text>
         </View>
       </View>
     </View>
@@ -72,6 +83,19 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     textAlign: 'center',
     width: '80%',
+  },
+  resultsContainer: {
+    position: 'absolute',
+    top: 80,
+    flexDirection: 'row',
+    width: '50%',
+  },
+  resultsCity: {
+    backgroundColor: 'white',
+    width: '100%',
+    textAlign: 'center',
+    borderBottomColor: 'black',
+    borderBottomWidth: 0.5,
   },
 });
 export default HomePage;
