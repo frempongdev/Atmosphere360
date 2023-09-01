@@ -1,10 +1,12 @@
-import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
 import React, {useState} from 'react';
-import {fetchCity} from '../../redux/geolocation/GeolocationSlice';
+import {clearResults, fetchCity} from '../../redux/geolocation/GeolocationSlice';
 import {useDispatch, useSelector} from 'react-redux';
 
 const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
   const {city} = useSelector(state => state.city);
 
@@ -14,6 +16,14 @@ const HomePage = () => {
     // console.log(inputValue);
     setInputValue(newValue);
     dispatch(fetchCity(newValue));
+  };
+
+  const handleCitySelect = ct => {
+    setInputValue('');
+    dispatch(clearResults());
+    setLatitude(ct.lat);
+    setLongitude(ct.lon);
+    setInputValue(`${ct?.name}, ${ct?.country}`);
   };
 
   return (
@@ -34,10 +44,12 @@ const HomePage = () => {
             <FlatList
               data={city}
               renderItem={({item}) => (
-                <Text
-                  style={
-                    styles.resultsCity
-                  }>{`${item?.name}, ${item.country}`}</Text>
+                <TouchableHighlight onPress={() => handleCitySelect(item)}>
+                  <Text
+                    style={
+                      styles.resultsCity
+                    }>{`${item?.name}, ${item.country}`}</Text>
+                </TouchableHighlight>
               )}
               keyExtractor={item => item.lat}
             />
@@ -85,6 +97,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   resultsContainer: {
+    zIndex: 99,
     position: 'absolute',
     top: 80,
     flexDirection: 'row',
@@ -98,4 +111,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
 });
+
 export default HomePage;
