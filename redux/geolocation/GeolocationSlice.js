@@ -17,7 +17,11 @@ export const fetchCity = createAsyncThunk('fetch/fetchCity', async input => {
 const geolocationSlice = createSlice({
   name: 'geolocation',
   initialState,
-  reducers: {},
+  reducers: {
+    clearResults: state => {
+      state.city = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCity.pending, state => ({...state, isLoading: true}))
@@ -30,4 +34,5 @@ const geolocationSlice = createSlice({
   },
 });
 
+export const {clearResults} = geolocationSlice.actions;
 export default geolocationSlice.reducer;
