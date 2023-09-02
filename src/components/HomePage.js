@@ -79,6 +79,12 @@ const HomePage = () => {
                 styles.cBlue,
               ]}>{`${weatherDetails?.name}, ${weatherDetails?.sys?.country}`}</Text>
             <View style={styles.weatherDetails}>
+              <Image
+                source={{
+                  uri: `https://openweathermap.org/img/wn/${weatherDetails?.weather[0]?.icon}@4x.png`,
+                }}
+                style={[styles.icon, styles.centre]}
+              />
               <Text style={[styles.description, styles.centre, styles.cBlue]}>
                 {weatherDetails?.weather[0]?.description}
               </Text>
@@ -88,13 +94,15 @@ const HomePage = () => {
                 </Text>
                 <View style={styles.rightDetails}>
                   <View style={styles.rightDetail}>
-                    <Text style={[styles.humidity, styles.centre, styles.cWhite]}>
+                    <Text
+                      style={[styles.humidity, styles.centre, styles.cWhite]}>
                       {weatherDetails?.main?.humidity}%
                     </Text>
                     <Text style={[styles.centre, styles.cBlue]}>Humidity</Text>
                   </View>
                   <View style={styles.rightDetail}>
-                    <Text style={[styles.humidity, styles.centre, styles.cWhite]}>
+                    <Text
+                      style={[styles.humidity, styles.centre, styles.cWhite]}>
                       {weatherDetails?.wind?.speed} m/s
                     </Text>
                     <Text style={[styles.centre, styles.cBlue]}>
@@ -168,6 +176,10 @@ const styles = StyleSheet.create({
   cityName: {
     fontSize: 25,
     fontWeight: 'bold',
+  },
+  icon: {
+    width: 120,
+    height: 90,
   },
   description: {
     marginBottom: 20,
