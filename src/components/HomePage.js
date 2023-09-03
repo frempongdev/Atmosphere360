@@ -29,6 +29,10 @@ const HomePage = () => {
   }, [coordinates, dispatch]);
 
   const handleInputChange = newValue => {
+    if (newValue.includes('.')) {
+      const valueArr = newValue.split(',');
+      setCoordinates(valueArr);
+    }
     setInputValue(newValue);
     dispatch(fetchCity(newValue));
   };
