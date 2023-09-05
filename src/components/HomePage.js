@@ -148,7 +148,6 @@ const styles = StyleSheet.create({
   },
   homeWrapper: {
     flex: 1,
-    backgroundColor: '#5b86e5',
     justifyContent: 'center',
     alignContent: 'center',
     color: 'white',
