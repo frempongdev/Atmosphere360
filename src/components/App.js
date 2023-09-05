@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Splash from './Splash';
@@ -6,7 +6,13 @@ import HomePage from './HomePage';
 import store from '../../redux/store';
 
 const App = () => {
-  const normalBool = true;
+  const [normalBool, setNormalBool] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNormalBool(true);
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView style={style.safeArea}>

@@ -15,6 +15,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {fetctWeather} from '../../redux/weather/weatherSlice';
 import Geolocation from 'react-native-geolocation-service';
+import requestLocationPermission from '../../redux/geolocation/locationPermission';
 
 const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
@@ -26,16 +27,20 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(requestLocationPermission());
     Geolocation.getCurrentPosition(
       position => {
-        console.log(position);
+        setCoordinates([
+          position?.coords?.latitude,
+          position?.coords?.longitude,
+        ]);
       },
       error => {
         console.log(error);
       },
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetctWeather(coordinates));
