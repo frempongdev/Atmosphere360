@@ -1,79 +1,212 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 
 
-# Getting Started
+# 
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+<a name="readme-top"></a>
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+<div align="center">
 
-To start Metro, run the following command from the _root_ of your React Native project:
+  <img src="https://github.com/frempongdev/Image-Master/assets/117144028/865ef0b1-f566-40fb-97ad-f7c417e21e49" alt="logo" width="160"  height="auto" />
+  <br/>
+   <br/>
 
-```bash
-# using npm
-npm start
+  <h1><b> Atmosphere 360 ⛅⛈️🌨️</b></h1>
 
-# OR using Yarn
-yarn start
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+# 📗 Table of Contents
+
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Usage](#usage)
+- [👥 Authors](#authors)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
+
+<br>
+
+<!-- DEPLOYMENT -->
+<br>
+
+<!-- DEPLOYMENT -->
+<!-- ### Have a look at the project's video presentation [here](https://www.loom.com/share/1f7de2b9345a4d3988c6327952899d30) 📽️ . -->
+
+<br>
+
+<!-- PROJECT DESCRIPTION -->
+
+# 📖 [ Atmosphere 360  ] <a name="about-project"></a>
+
+
+**Atmosphere 360** is a mobile weather application that helps users monitor weather conditions around the world. It enables users search for weather details by cities or by using coordinates.
+
+Click for [Web Version](https://atmosphere-360.netlify.app/)
+
+### Screenshot
+![atmos scsh](https://github.com/frempongdev/My-Web-Weather/assets/117144028/a256c852-ac6e-4993-859e-d6f223588203)
+
+
+## 🛠 Built With <a name="built-with"></a>
+
+### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <summary>React</summary>
+  <ul>
+    <li><a href="https://reactjs.org/">Link to React</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Redux</summary>
+  <ul>
+    <li><a href="https://redux.js.org/">Link to Redux</a></li>
+  </ul>
+</details>
+
+
+<details>
+  <summary>Javascript</summary>
+  <ul>
+    <li><a href="https://www.javascript.com/">Link to Javascript</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>CSS</summary>
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Link to CSS</a></li>
+  </ul>
+</details>
+
+<br>
+
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+- **This applicatioion takes user input for city name and fetches its coordinates**
+- **This applicatioion takes user input of coordinates of locations and fetches its weather detaills**
+- **This applicatioion takes user permission for user's location details and displays the corresponding weater condition**
+- **This applicatioion makes use of the Openweather API**
+- **This applicatioion displays various weather details like temperature, humidity etc**
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need to copy the link of this Repository.
+
+
+
+```sh
+ https://github.com/frempongdev/My-Web-Weather.git
+```
+<br>
+
+### Setup
+
+Clone this repository to your desired directory using the command: 
+
+
+```sh
+  cd your-folder
+  git clone https://github.com/frempongdev/My-Web-Weather.git 
 ```
 
-## Step 2: Start your Application
+<br>
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-### For Android
+### Usage
 
-```bash
-# using npm
-npm run android
+Kindly go ahead and give this project a massage but do not forget to give a detailed description in your pull request.
 
-# OR using Yarn
-yarn android
+<!--
+Example command:
+
+```sh
+  rails server
 ```
+--->
 
-### For iOS
 
-```bash
-# using npm
-npm run ios
 
-# OR using Yarn
-yarn ios
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+<!-- AUTHORs -->
 
-## Step 3: Modifying your App
+## 👥 Author <a name="authors"></a>
+### 👥 Frempong
 
-Now that you have successfully run the app, let's modify it.
+- GitHub: [@frempongdev](https://github.com/frempongdev)
+- Twitter: [@knobaddy](https://twitter.com/knobaddy)
+- LinkedIn: [Samuel knower Amankwaa-Frempong](https://www.linkedin.com/in/frempongdev/)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+## 🔭 Future Features <a name="future-features"></a>
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+- [ ] **Allow Users to select various measuring units like celcious, kelvin, miles etc**
+- [ ] **More weather information**
+- [ ] **Weeks Forecast**
 
-To learn more about React Native, take a look at the following resources:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<!-- CONTRIBUTING -->
+## :handshake: Contributing <a name="contributing"></a>
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+
+If you like this project kindly support by suggesting changed by forking and pull requests
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank  everyone who inspired me to learn programming. Regards to the whole Microverse team, Peers, and family supporting. 
+<!-- <br>A massive Thank You to [Cindy Shin](https://www.behance.net/adagio07) who is the original designer of this [design](https://www.behance.net/gallery/29845175/CC-Global-Summit-2015) -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](license) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
